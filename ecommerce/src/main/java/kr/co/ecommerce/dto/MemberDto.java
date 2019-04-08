@@ -17,7 +17,6 @@ public class MemberDto {
 
 	public MemberDto() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public MemberDto(String name, String age, Timestamp createDate, Timestamp updateDate) {
