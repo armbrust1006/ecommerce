@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.co.ecommerce.dto.MemberDto;
 
 @RestController
-@RequestMapping("/homejson")
+@RequestMapping("/home/json")
 public class HomeRestController {
 
 	@RequestMapping(value = "/getMemberInfo", method = RequestMethod.POST)
