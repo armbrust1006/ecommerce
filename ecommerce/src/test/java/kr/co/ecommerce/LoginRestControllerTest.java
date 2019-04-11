@@ -17,7 +17,6 @@ public class LoginRestControllerTest {
 
 	@Test
 	public void login() {
-		loginService.getLoginState("");
 	}
 
 }
