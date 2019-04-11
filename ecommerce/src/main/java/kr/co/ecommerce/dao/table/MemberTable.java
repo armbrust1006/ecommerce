@@ -25,7 +25,6 @@ import lombok.ToString;
 @ToString
 @Getter
 @Setter
-@Alias(value = "member")
 @Entity
 @Table(name = "member")
 public class MemberTable {

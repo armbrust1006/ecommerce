@@ -10,10 +10,10 @@ import kr.co.ecommerce.repository.mybatis.MemberMapper;
 public class HomeService {
 
 	@Autowired
-	private MemberMapper memberMapperRepository;
+	private MemberMapper memberMapper;
 
 	public MemberTable getMemberInfo(int memberId) {
-		return memberMapperRepository.selectMember1(memberId);
+		return memberMapper.selectMember1(memberId);
 	}
 
 }
