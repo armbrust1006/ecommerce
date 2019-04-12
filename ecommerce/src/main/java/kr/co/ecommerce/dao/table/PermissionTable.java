@@ -10,16 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author kim.gh
  * @version 0.1
  */
-@ToString
 @Getter
-@Setter
 @Entity
 @Table(name = "permission")
 public class PermissionTable {

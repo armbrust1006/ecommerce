@@ -17,17 +17,13 @@ import javax.persistence.criteria.Join;
 
 import kr.co.ecommerce.dao.table.PermissionTable;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 /**
  * @author kim.gh
  * @version 0.1
  * @see Join member table and permission table
  */
-@ToString
 @Getter
-@Setter
 @Entity
 @Table(name = "member")
 public class SessionInfo {

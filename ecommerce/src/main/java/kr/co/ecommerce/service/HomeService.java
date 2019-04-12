@@ -13,7 +13,7 @@ public class HomeService {
 	private MemberMapper memberMapper;
 
 	public MemberTable getMemberInfo(int memberId) {
-		return memberMapper.selectMember1(memberId);
+		return memberMapper.selectMember(memberId);
 	}
 
 }

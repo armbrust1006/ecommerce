@@ -9,6 +9,6 @@ import kr.co.ecommerce.dao.table.MemberTable;
 @Repository
 public interface MemberMapper {
 
-	public MemberTable selectMember1(int memberId);
+	public MemberTable selectMember(int memberId);
 
 }
