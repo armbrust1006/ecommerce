@@ -1,4 +1,4 @@
-package kr.co.ecommerce.dao.join;
+package kr.co.ecommerce.dao.join.jpa;
 
 import java.sql.Timestamp;
 import java.util.Date;

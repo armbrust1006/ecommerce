@@ -1,4 +1,4 @@
-package kr.co.ecommerce.repository.hibernate;
+package kr.co.ecommerce.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -10,4 +10,5 @@ import kr.co.ecommerce.dao.table.MemberTable;
  */
 public interface MemberJpa extends JpaRepository<MemberTable, Integer> {
 
+	public MemberTable getMember(Integer memberId);
 }

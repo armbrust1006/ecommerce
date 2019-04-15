@@ -1,4 +1,4 @@
-package kr.co.ecommerce.repository.hibernate;
+package kr.co.ecommerce.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

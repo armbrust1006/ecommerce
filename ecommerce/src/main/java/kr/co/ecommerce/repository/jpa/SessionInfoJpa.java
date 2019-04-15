@@ -1,8 +1,8 @@
-package kr.co.ecommerce.repository.hibernate;
+package kr.co.ecommerce.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import kr.co.ecommerce.dao.join.SessionInfo;
+import kr.co.ecommerce.dao.join.jpa.SessionInfo;
 
 /**
  * @author HAA
