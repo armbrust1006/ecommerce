@@ -1,30 +1,27 @@
 package kr.co.ecommerce.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.ecommerce.dao.table.User;
-import kr.co.ecommerce.service.LoginService;
+import kr.co.ecommerce.dto.MemberDto;
+import kr.co.ecommerce.service.IndexService;
 
 @RestController
-@RequestMapping("/login/json")
-public class LoginRestController {
+@RequestMapping("/home/json")
+public class IndexRestController {
 	private final Logger log = LoggerFactory.getLogger(IndexRestController.class);
 
 	@Autowired
-	private LoginService loginService;
+	private IndexService homeService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public User getLoginInfo(HttpSession session, Model model) {
-		log.info("------ getLoginInfo start");
-		return loginService.getLoginState(1L);
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public MemberDto getLoginInfo() {
+		log.info("------ getMemberInfo start");
+		return new MemberDto();
 	}
 
 }

@@ -1,0 +1,1 @@
+ALTER TABLE ecommerce.permission ADD display1_flag INT(1) AFTER create_date;

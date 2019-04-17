@@ -14,22 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 	private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-	@RequestMapping(value = "/a", method = RequestMethod.GET)
-	public String loginPage(HttpSession session, Model model) {
-		log.info("------ loginPage Paging");
-		String loginId = (String) session.getAttribute("loginId");
-		return "index";
-	}
-
-	@RequestMapping(value = "/b", method = RequestMethod.GET)
-	public String logoutPage(HttpSession session, Model model) {
-		log.info("------ loginPage Paging");
-		String loginId = (String) session.getAttribute("loginId");
-		return "index";
-	}
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String login(HttpSession session, Model model) {
+	public String loginPage(HttpSession session, Model model) {
 		log.info("------ loginPage Paging");
 		String loginId = (String) session.getAttribute("loginId");
 		return "login";

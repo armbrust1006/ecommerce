@@ -110,8 +110,8 @@
 							<goal>process</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>src/main/generated</outputDirectory>
-							<processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+							<outputDirectory>target/generated-sources/java</outputDirectory>
+							<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 						</configuration>
 					</execution>
 				</executions>

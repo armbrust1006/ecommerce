@@ -3,7 +3,7 @@
 <mapper
 	namespace="kr.co.ecommerce.repository.mybatis.MemberMapper">
 
-	<resultMap type="MemberTable" id="MemberResult">
+	<resultMap type="Member" id="MemberResult">
 		<id column="member_id" property="memberId" />
 		<result column="permission_id" property="permissionId" />
 		<result column="name" property="name" />
