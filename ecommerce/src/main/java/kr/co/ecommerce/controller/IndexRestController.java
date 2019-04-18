@@ -7,21 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.ecommerce.dto.MemberDto;
-import kr.co.ecommerce.service.IndexService;
+import kr.co.ecommerce.dao.table.Member;
+import kr.co.ecommerce.service.IndexMapperService;
 
 @RestController
-@RequestMapping("/home/json")
+@RequestMapping("/json/index")
 public class IndexRestController {
 	private final Logger log = LoggerFactory.getLogger(IndexRestController.class);
 
 	@Autowired
-	private IndexService homeService;
+	private IndexMapperService indexService;
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public MemberDto getLoginInfo() {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public Member getLoginInfo() {
 		log.info("------ getMemberInfo start");
-		return new MemberDto();
+		Member user = indexService.getUserInfo(1L);
+		return user;
 	}
 
 }

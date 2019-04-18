@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,8 +23,8 @@ import lombok.ToString;
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(exclude = { "createDate", "updateDate" })
-public class Permission {
+@EqualsAndHashCode(exclude = { "createDate", "createUserId" })
+public class Authority {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,21 +34,26 @@ public class Permission {
 	@Column(name = "user_id")
 	private Long userId;
 
-	@Column(name = "session_flag")
-	private int sessionFlag;
+	@Column(name = "permission_char")
+	private String permissionChar;
+
+	@Column(name = "permission_number")
+	private int permissionNumber;
 
 	@Column(name = "create_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
-	@Column(name = "update_date")
-	private Date updateDate;
+	@Column(name = "create_user_id")
+	private Long createUserId;
 
 	@Builder
-	public Permission(Long userId, int sessionFlag, Date createDate, Date updateDate) {
+	public Authority(Long userId, String permissionChar, int permissionNumber, Date createDate, Long createUserId) {
 		this.userId = userId;
-		this.sessionFlag = sessionFlag;
+		this.permissionChar = permissionChar;
+		this.permissionNumber = permissionNumber;
 		this.createDate = createDate;
-		this.updateDate = updateDate;
+		this.createUserId = createUserId;
 	}
 
 }

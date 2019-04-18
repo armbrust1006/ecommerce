@@ -1,16 +1,12 @@
 package kr.co.ecommerce.dao.table;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,12 +19,12 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user")
+@Table(name = "member")
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(exclude = { "createDate", "updateDate" })
-public class User {
+public class Member {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,13 +63,9 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
-	@OneToMany
-	@JoinColumn(name = "user_id", insertable = false, updatable = false)
-	private Collection<Permission> permission;
-
 	@Builder
-	public User(String account, String password, String name, int birthYear, int birthMonth, int birthDay, String email,
-			String address, Date createDate, Date updateDate) {
+	public Member(String account, String password, String name, int birthYear, int birthMonth, int birthDay,
+			String email, String address, Date createDate, Date updateDate) {
 		this.account = account;
 		this.password = password;
 		this.name = name;
