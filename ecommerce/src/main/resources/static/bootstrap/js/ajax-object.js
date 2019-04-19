@@ -1,9 +1,4 @@
-$(document).on('click', '#loginBtn', function (event) {
-	let obj = {};
-	$("form").find("input[class=form-control]").each(function () {
-		obj[this.id] = this.value;
-	});
-
+function ajaxCustomObject(type, url, data) {
 	$.ajax({
 		type: "POST",
 		url: "/json/user/login",
@@ -11,10 +6,10 @@ $(document).on('click', '#loginBtn', function (event) {
 		dataType: "json",
 		contentType: "application/json; charset=utf-8;",
 		success: function (e) {
-			console.log(e);
+			return e;
 		},
 		error: function (xhr, status, error) {
-			alert(error);
+			return error;
 		}
 	});
-});
+}

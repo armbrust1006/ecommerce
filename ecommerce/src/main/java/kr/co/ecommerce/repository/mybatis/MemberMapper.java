@@ -9,6 +9,6 @@ import kr.co.ecommerce.dao.table.Member;
 @Repository
 public interface MemberMapper {
 
-	Member selectLoginInfo(String account, String password);
+	Member findByLoginInfo(String account, String password);
 
 }

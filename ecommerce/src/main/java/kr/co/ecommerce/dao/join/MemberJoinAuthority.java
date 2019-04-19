@@ -1,10 +1,11 @@
 package kr.co.ecommerce.dao.join;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +33,8 @@ public class MemberJoinAuthority {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "member_Id")
-	private Long memberId;
+	@Column(name = "user_Id")
+	private Long userId;
 
 	@Column
 	private String account;
@@ -67,9 +68,9 @@ public class MemberJoinAuthority {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
-	@OneToMany
-	@JoinColumn(name = "user_id")
-	private Collection<Authority> authority;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id")
+	private List<Authority> authority;
 
 	@Builder
 	public MemberJoinAuthority(String account, String password, String name, int birthYear, int birthMonth,

@@ -9,8 +9,8 @@ import kr.co.ecommerce.dao.table.Member;
 import kr.co.ecommerce.repository.jpa.qdsl.MemberRepository;
 
 @Service
-public class IndexJpaService {
-	private final Logger log = LoggerFactory.getLogger(IndexJpaService.class);
+public class IndexService {
+	private final Logger log = LoggerFactory.getLogger(IndexService.class);
 
 	@Autowired
 	private MemberRepository userRepository;

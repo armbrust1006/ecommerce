@@ -1,3 +1,4 @@
+<%@include file="common/setting.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 

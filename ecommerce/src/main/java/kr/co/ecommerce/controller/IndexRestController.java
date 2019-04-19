@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.ecommerce.dao.table.Member;
-import kr.co.ecommerce.service.IndexMapperService;
+import kr.co.ecommerce.service.IndexService;
 
 @RestController
 @RequestMapping("/json/index")
@@ -16,7 +16,7 @@ public class IndexRestController {
 	private final Logger log = LoggerFactory.getLogger(IndexRestController.class);
 
 	@Autowired
-	private IndexMapperService indexService;
+	private IndexService indexService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public Member getLoginInfo() {
