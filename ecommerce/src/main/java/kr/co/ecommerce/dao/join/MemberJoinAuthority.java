@@ -1,6 +1,6 @@
 package kr.co.ecommerce.dao.join;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import kr.co.ecommerce.dao.table.Authority;
 import lombok.AccessLevel;
@@ -60,13 +61,13 @@ public class MemberJoinAuthority {
 	@Column
 	private String address;
 
+	@CreationTimestamp
 	@Column(name = "create_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	private LocalDateTime createDate;
 
+	@UpdateTimestamp
 	@Column(name = "update_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
@@ -74,7 +75,8 @@ public class MemberJoinAuthority {
 
 	@Builder
 	public MemberJoinAuthority(String account, String password, String name, int birthYear, int birthMonth,
-			int birthDay, String email, String address, Date createDate, Date updateDate) {
+			int birthDay, String email, String address, LocalDateTime createDate, LocalDateTime updateDate) {
+		super();
 		this.account = account;
 		this.password = password;
 		this.name = name;

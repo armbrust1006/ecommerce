@@ -16,7 +16,7 @@ import kr.co.ecommerce.dto.LoginDto;
 import kr.co.ecommerce.service.LoginAndLogoutService;
 
 @RestController
-@RequestMapping("/json/user")
+@RequestMapping("/json/member")
 public class LoginAndLogoutRestController {
 	private final Logger log = LoggerFactory.getLogger(IndexRestController.class);
 

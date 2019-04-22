@@ -1,6 +1,6 @@
 package kr.co.ecommerce.dao.table;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,8 +29,8 @@ public class Member {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_Id")
-	private Long userId;
+	@Column(name = "meber_Id")
+	private Long memberId;
 
 	@Column
 	private String account;
@@ -40,14 +41,14 @@ public class Member {
 	@Column
 	private String name;
 
-	@Column(name = "birth_year")
-	private int birthYear;
+	@Column(name = "birthday_year")
+	private int birthdayYear;
 
-	@Column(name = "birth_month")
-	private int birthMonth;
+	@Column(name = "birthday_month")
+	private int birthdayMonth;
 
-	@Column(name = "birth_day")
-	private int birthDay;
+	@Column(name = "birthday_date")
+	private int birthdayDate;
 
 	@Column
 	private String email;
@@ -55,23 +56,24 @@ public class Member {
 	@Column
 	private String address;
 
+	@CreationTimestamp
 	@Column(name = "create_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	private LocalDateTime createDate;
 
+	@UpdateTimestamp
 	@Column(name = "update_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	@Builder
-	public Member(String account, String password, String name, int birthYear, int birthMonth, int birthDay,
-			String email, String address, Date createDate, Date updateDate) {
+	public Member(String account, String password, String name, int birthdayYear, int birthdayMonth, int birthdayDate,
+			String email, String address, LocalDateTime createDate, LocalDateTime updateDate) {
+		super();
 		this.account = account;
 		this.password = password;
 		this.name = name;
-		this.birthYear = birthYear;
-		this.birthMonth = birthMonth;
-		this.birthDay = birthDay;
+		this.birthdayYear = birthdayYear;
+		this.birthdayMonth = birthdayMonth;
+		this.birthdayDate = birthdayDate;
 		this.email = email;
 		this.address = address;
 		this.createDate = createDate;

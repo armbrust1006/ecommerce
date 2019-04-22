@@ -1,6 +1,6 @@
 package kr.co.ecommerce.dao.table;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "permission")
+@Table(name = "authority")
 @ToString
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -28,30 +28,32 @@ public class Authority {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "permission_Id")
-	private Long permissionId;
+	@Column(name = "authority_Id")
+	private Long authorityId;
 
-	@Column(name = "user_id")
-	private Long userId;
+	@Column(name = "member_id")
+	private Long memberId;
 
-	@Column(name = "permission_char")
-	private String permissionChar;
+	@Column(name = "authority_char")
+	private String authorityChar;
 
-	@Column(name = "permission_number")
-	private int permissionNumber;
+	@Column(name = "authority_number")
+	private int authorityNumber;
 
+	@CreationTimestamp
 	@Column(name = "create_date")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	private LocalDateTime createDate;
 
 	@Column(name = "create_user_id")
 	private Long createUserId;
 
 	@Builder
-	public Authority(Long userId, String permissionChar, int permissionNumber, Date createDate, Long createUserId) {
-		this.userId = userId;
-		this.permissionChar = permissionChar;
-		this.permissionNumber = permissionNumber;
+	public Authority(Long memberId, String authorityChar, int authorityNumber, LocalDateTime createDate,
+			Long createUserId) {
+		super();
+		this.memberId = memberId;
+		this.authorityChar = authorityChar;
+		this.authorityNumber = authorityNumber;
 		this.createDate = createDate;
 		this.createUserId = createUserId;
 	}
