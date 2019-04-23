@@ -1,4 +1,4 @@
-package kr.co.ecommerce.controller;
+package kr.co.ecommerce.controller.rest;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.ecommerce.dao.table.Member;
+import kr.co.ecommerce.dao.Member;
 import kr.co.ecommerce.dto.RegisterDto;
 import kr.co.ecommerce.service.MembershipService;
 
@@ -27,12 +27,12 @@ public class MembershipRestController {
 	public boolean register(@RequestBody RegisterDto registerDto) {
 		log.info("register processing");
 		try {
-			membershipService.insertMemberInfo(
+			membershipService.insertMember(
 					Member.builder()
 					.name(registerDto.getName())
-					.birthdayYear(Integer.parseInt(registerDto.getBrithdayYear()))
-					.birthdayMonth(Integer.parseInt(registerDto.getBrithdayMonth()))
-					.birthdayDate(Integer.parseInt(registerDto.getBrithdayDate()))
+					.birthdayYear(Integer.parseInt(registerDto.getBirthdayYear()))
+					.birthdayMonth(Integer.parseInt(registerDto.getBirthdayMonth()))
+					.birthdayDate(Integer.parseInt(registerDto.getBirthdayDate()))
 					.account(registerDto.getEmail())
 					.password(registerDto.getPassword())
 					.address(registerDto.getAddress())

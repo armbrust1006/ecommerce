@@ -1,4 +1,4 @@
-function ajaxCustomObject(type, url, data) {
+function ajaxObj(type, url, data) {
 	let resultObj = {};
 	$.ajax({
 		type : type,
@@ -14,6 +14,23 @@ function ajaxCustomObject(type, url, data) {
 		error : function(xhr, status, error) {
 			resultObj.key = "error";
 			resultObj.value = error;
+			return resultObj;
+		}
+	});
+}
+
+function ajaxBol(type, url, data) {
+	let resultObj = {};
+	$.ajax({
+		type : type,
+		url : url,
+		data : JSON.stringify(data),
+		dataType : "json",
+		contentType : "application/json; charset=utf-8;",
+		success : function(e) {
+			return resultObj;
+		},
+		error : function(xhr, status, error) {
 			return resultObj;
 		}
 	});

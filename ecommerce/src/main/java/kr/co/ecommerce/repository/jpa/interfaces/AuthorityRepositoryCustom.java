@@ -1,4 +1,4 @@
-package kr.co.ecommerce.repository.jpa.qdsl;
+package kr.co.ecommerce.repository.jpa.interfaces;
 
 public interface AuthorityRepositoryCustom {
 

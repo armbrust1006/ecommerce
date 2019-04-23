@@ -1,4 +1,4 @@
-package kr.co.ecommerce.controller;
+package kr.co.ecommerce.controller.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.ecommerce.dao.table.Member;
+import kr.co.ecommerce.dao.Member;
 import kr.co.ecommerce.service.IndexService;
 
 @RestController

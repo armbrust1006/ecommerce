@@ -1,4 +1,4 @@
-package kr.co.ecommerce.dao.table;
+package kr.co.ecommerce.dao;
 
 import java.time.LocalDateTime;
 

@@ -10,14 +10,14 @@ import lombok.ToString;
 @Setter
 @Getter
 @EqualsAndHashCode
-public class LoginDto {
+public class SessionInfoDto {
 	private String account;
-	private String password;
+	private String name;
 
 	@Builder
-	public LoginDto(String account, String password) {
+	public SessionInfoDto(String account, String name) {
 		this.account = account;
-		this.password = password;
+		this.name = name;
 	}
 
 }

@@ -16,15 +16,18 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
-				<form>
+				<form action="/login" method="post">
+					<c:if test="${failMessage != null}">
+						<label class="form-controll">${failMessage}</label>
+					</c:if>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="email" id="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> <label for="email">Email address</label>
+							<input type="email" id="inputEmail" name="account" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> <label for="inputEmail">Email address</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="password" id="password" class="form-control" placeholder="Password" required="required"> <label for="password">Password</label>
+							<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required"> <label for="inputPassword">Password</label>
 						</div>
 					</div>
 					<div class="form-group">

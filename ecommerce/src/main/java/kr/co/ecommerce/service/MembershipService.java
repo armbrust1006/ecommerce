@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.co.ecommerce.dao.table.Authority;
-import kr.co.ecommerce.dao.table.Member;
-import kr.co.ecommerce.repository.jpa.qdsl.MemberRepository;
-import kr.co.ecommerce.repository.mybatis.MemberMapper;
+import kr.co.ecommerce.dao.Authority;
+import kr.co.ecommerce.dao.Member;
+import kr.co.ecommerce.repository.MemberMapper;
+import kr.co.ecommerce.repository.jpa.interfaces.MemberRepository;
 
 @Service
 public class MembershipService {
@@ -24,22 +24,18 @@ public class MembershipService {
 	private MemberMapper memberMapper;
 
 	@Transactional
-	public void insertMemberInfo(Member member) {
-		log.info("### insertMemberInfo ###");
-		memberMapper.insertMemberInfo(member);
+	public void insertMember(Member member) {
+		log.info("### insertMember ###");
+		memberMapper.insert(member);
 		long memberId = member.getMemberId();
-		insertAuthority(Authority.builder()
-				.memberId(memberId)
-				.authorityChar("a")
-				.authorityNumber(1)
-				.createDate(LocalDateTime.now())
-				.createUserId(memberId)
-				.build());
-	}
-
-	public void insertAuthority(Authority authority) {
-		log.info("### insertAuthority ###");
-		memberMapper.insertAuthority(authority);
+		log.info(Long.toString(memberId));
+//		insertAuthority(Authority.builder()
+//				.memberId(memberId)
+//				.authorityChar("a")
+//				.authorityNumber(1)
+//				.createDate(LocalDateTime.now())
+//				.createUserId(memberId)
+//				.build());
 	}
 
 }

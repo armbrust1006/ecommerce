@@ -5,14 +5,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.ecommerce.dao.table.Authority;
-import kr.co.ecommerce.dao.table.Member;
-import kr.co.ecommerce.repository.jpa.qdsl.AuthorityRepository;
-import kr.co.ecommerce.repository.jpa.qdsl.MemberRepository;
+import kr.co.ecommerce.dao.Member;
+import kr.co.ecommerce.repository.MemberMapper;
+import kr.co.ecommerce.repository.jpa.interfaces.AuthorityRepository;
+import kr.co.ecommerce.repository.jpa.interfaces.MemberRepository;
 
 @Service
 public class LoginAndLogoutService {
 	private final Logger log = LoggerFactory.getLogger(LoginAndLogoutService.class);
+
+	@Autowired
+	private MemberMapper memberMapper;
 
 	@Autowired
 	private MemberRepository UserRepository;
@@ -20,14 +23,12 @@ public class LoginAndLogoutService {
 	@Autowired
 	private AuthorityRepository permissionJpaRepository;
 
-	public Member getLoginState(Long loginId) {
-		log.info("------ getLoginState start");
-		return null;
+	// 이하 모든 메소드는 Mybatis Service
+	public Member getMemberLogin(Member member) {
+		log.info("### getMemberLogin ###");
+		return memberMapper.getMemberLogin(member.getAccount(), member.getPassword());
 	}
 
-	public Authority getLoginState1(Long loginId) {
-		log.info("------ getLoginState1 start");
-		return permissionJpaRepository.findById(loginId).get();
-	}
+	// 이하 모든 메소드는 Jpa Service
 
 }

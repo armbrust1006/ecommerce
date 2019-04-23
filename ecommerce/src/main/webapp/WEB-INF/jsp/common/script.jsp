@@ -6,4 +6,4 @@
 <script src="/static/bootstrap/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Ajax JavaScript-->
-<script src="/static/bootstrap/js/ajax-object.js"></script>
+<script src="/static/bootstrap/js/ajax-custom.js"></script>

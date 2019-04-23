@@ -28,15 +28,15 @@
 								<label class="col-form-label">* Birthday</label>
 							</div>
 							<div class="col-md-4">
-								<select id="selectYear" name="brithdayYear" class="form-control">
+								<select id="selectYear" name="birthdayYear" class="form-control">
 								</select>
 							</div>
 							<div class="col-md-3">
-								<select id="selectMonth" name="brithdayMonth" class="form-control">
+								<select id="selectMonth" name="birthdayMonth" class="form-control">
 								</select>
 							</div>
 							<div class="col-md-3">
-								<select id="selectDate" name="brithdayDate" class="form-control">
+								<select id="selectDate" name="birthdayDate" class="form-control">
 								</select>
 							</div>
 						</div>

@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.ecommerce.dao.table.Member;
-import kr.co.ecommerce.repository.jpa.qdsl.MemberRepository;
+import kr.co.ecommerce.dao.Member;
+import kr.co.ecommerce.repository.jpa.interfaces.MemberRepository;
 
 @Service
 public class IndexService {
