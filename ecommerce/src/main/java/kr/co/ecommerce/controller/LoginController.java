@@ -8,37 +8,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.ecommerce.dao.Member;
 import kr.co.ecommerce.dto.LoginDto;
 import kr.co.ecommerce.dto.SessionInfoDto;
-import kr.co.ecommerce.service.LoginAndLogoutService;
+import kr.co.ecommerce.service.LoginService;
 
 @Controller
-public class LoginAndLogoutController {
-	private final Logger log = LoggerFactory.getLogger(LoginAndLogoutController.class);
+public class LoginController {
+	private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
-	private LoginAndLogoutService loginAndLogoutService;
+	private LoginService loginService;
 
 	/**
 	 * 로그인 페이지로 이동
 	 * 
-	 * @param session
-	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage(HttpSession session, Model model) {
+	public String loginPage() {
 		log.info("### login Page ###");
-		if (session.getAttribute("login") != null) {
-			model.addAttribute("loginChecker", "You are already signed in.\r\n" + "Do you want to re-login?");
-		}
 		return "login";
 	}
 
@@ -53,22 +48,21 @@ public class LoginAndLogoutController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(@ModelAttribute("loginDto") LoginDto loginDto, HttpSession session) {
 		log.info("### login Process ###");
+		ModelAndView modelAndView = new ModelAndView();
 
 		// 로그인 정보 습득
-		Member loginInfo = loginAndLogoutService.getMemberLogin(
+		Member loginInfo = loginService.getMemberLogin(
 				Member.builder().account(loginDto.getAccount()).password(loginDto.getPassword()).build());
 
 		// 로그인 정보가 존재하지 않으면 로그인 실패
 		if (!Optional.ofNullable(loginInfo).isPresent()) {
-			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.addObject("failMessage", "Please checking your Email address and password.");
+			modelAndView.addObject("failMessage", "아이디와 비밀번호를 다시 한번 확인해주세요.");
 			log.info("### login failed ###");
 			return modelAndView;
 		}
 
-		// 로그인 세션 존재 체크
+		// 로그인 세션 존재하면 삭제
 		if (session.getAttribute("login") != null) {
-			// 로그인 세션 삭제
 			session.removeAttribute("login");
 		}
 
@@ -78,7 +72,22 @@ public class LoginAndLogoutController {
 		session.setAttribute("login", sessionInfo);
 
 		log.info("### login succeed ###");
-		return new ModelAndView("redirect:/index");
+		modelAndView.setViewName("redirect:/index");
+		return modelAndView;
 	}
 
+	/**
+	 * 현재 로그인 상태 가져오기
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public @ResponseBody String loginCheck(HttpSession session) {
+		log.info("### loginCheck posessing ###");
+		if (session.getAttribute("login") != null) {
+			return new StringBuilder().append("이미 로그인 되어 있습니다.\r\n").append("그래도 다시 로그인 하시겠습니까?").toString();
+		}
+		return "";
+	}
 }

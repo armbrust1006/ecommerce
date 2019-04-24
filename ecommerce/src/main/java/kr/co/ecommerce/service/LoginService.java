@@ -11,17 +11,17 @@ import kr.co.ecommerce.repository.jpa.interfaces.AuthorityRepository;
 import kr.co.ecommerce.repository.jpa.interfaces.MemberRepository;
 
 @Service
-public class LoginAndLogoutService {
-	private final Logger log = LoggerFactory.getLogger(LoginAndLogoutService.class);
+public class LoginService {
+	private final Logger log = LoggerFactory.getLogger(LoginService.class);
 
 	@Autowired
 	private MemberMapper memberMapper;
 
 	@Autowired
-	private MemberRepository UserRepository;
+	private MemberRepository userRepository;
 
 	@Autowired
-	private AuthorityRepository permissionJpaRepository;
+	private AuthorityRepository authorityRepository;
 
 	// 이하 모든 메소드는 Mybatis Service
 	public Member getMemberLogin(Member member) {

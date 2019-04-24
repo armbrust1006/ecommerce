@@ -13,7 +13,7 @@ public class IndexService {
 	private final Logger log = LoggerFactory.getLogger(IndexService.class);
 
 	@Autowired
-	private MemberRepository userRepository;
+	private MemberRepository memberRepository;
 
 	public Member getUserInfo(Long userId) {
 		log.info("------ controller getMemberInfo start");

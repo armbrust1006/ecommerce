@@ -1,12 +1,13 @@
-<%@include file="common/setting.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<!-- Common Header -->
-<%@include file="common/header.jsp"%>
+	<!-- Common Header -->
+	<%@include file="common/header.jsp"%>
 
-<title>SB Admin - Register</title>
+	<title>SB Admin - Register</title>
 
 </head>
 
@@ -16,10 +17,14 @@
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">Register an Account</div>
 			<div class="card-body">
+				<c:if test="${failMessage != null}">
+					<label class="form-controll">${failMessage}</label>
+				</c:if>
 				<form>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="text" id="inputName" name="name" class="form-control" placeholder="Name" required="required" autofocus="autofocus"> <label for="inputName">* Name</label>
+							<input type="text" id="inputName" name="name" class="form-control" placeholder="Name"
+								required="required" autofocus="autofocus"> <label for="inputName">* Name</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -43,32 +48,40 @@
 					</div>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="required"> <label for="inputEmail">* Email address</label>
+							<input type="email" id="inputEmail" name="email" class="form-control"
+								placeholder="Email address" required="required"> <label for="inputEmail">* Email
+								address</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
 								<div class="form-label-group">
-									<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required"> <label for="inputPassword">* Password</label>
+									<input type="password" id="inputPassword" name="password" class="form-control"
+										placeholder="Password" required="required"> <label for="inputPassword">*
+										Password</label>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-label-group">
-									<input type="password" id="confirmPassword" name="password" class="form-control" placeholder="Confirm password" required="required"> <label for="confirmPassword">* Confirm password</label>
+									<input type="password" id="confirmPassword" name="password" class="form-control"
+										placeholder="Confirm password" required="required"> <label
+										for="confirmPassword">* Confirm password</label>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="text" id="inputAddress" name="address" class="form-control" placeholder="Address" required="required"> <label for="inputAddress">Address</label>
+							<input type="text" id="inputAddress" name="address" class="form-control"
+								placeholder="Address" required="required"> <label for="inputAddress">Address</label>
 						</div>
 					</div>
 					<a class="btn btn-primary btn-block" id="regist">Register</a>
 				</form>
 				<div class="text-center">
-					<a class="d-block small mt-3" href="/login">Login Page</a> <a class="d-block small" href="/forgot-password">Forgot Password?</a>
+					<a class="d-block small mt-3" href="/login">Login Page</a> <a class="d-block small"
+						href="/forgot-password">Forgot Password?</a>
 				</div>
 			</div>
 		</div>

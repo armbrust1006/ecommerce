@@ -7,7 +7,7 @@
 <!-- Common Header -->
 <%@include file="common/header.jsp"%>
 
-<title>SB Admin - Forgot Password</title>
+<title>심플 옥션 - 이메일 인증</title>
 
 </head>
 
@@ -15,19 +15,19 @@
 
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">
-			<div class="card-header">비밀번호 찾기</div>
+			<div class="card-header">이메일 인증</div>
 			<div class="card-body">
 				<div class="text-center mb-4">
-					<h4>비밀번호를 잊어버리셨나요?</h4>
-					<p>비밀번호 찾으시려면 본인의 이메일(아이디)를 입력하시기 바랍니다.</p>
+					<h4>인증 번호를 확인</h4>
+					<p>입력하신 이메일 주소로 인증 번호가 전송되었습니다. 인증 번호를 입력해 주세요.</p>
 				</div>
-				<form action="/forgot" method="post">
+				<form action="/pinCheck" method="post">
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" name="email" class="form-control" placeholder="이메일 주소(아이디)" required="required" autofocus="autofocus"> <label for="inputEmail">이메일 주소(아이디)</label>
+							<input type="number" id="inputPinNum" name="pinNum" class="form-control" placeholder="인증 번호" required="required" autofocus="autofocus"> <label for="inputPinNum">인증 번호</label>
 						</div>
 					</div>
-					<a class="btn btn-primary btn-block text-white" id="ResetBtn">인증 번호 전송</a>
+					<a class="btn btn-primary btn-block" id="checkBtn">인증</a>
 				</form>
 				<div class="text-center">
 					<a class="d-block small mt-3" href="/regist">회원등록</a> <a class="d-block small" href="/login">로그인</a>

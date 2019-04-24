@@ -1,12 +1,13 @@
-<%@include file="common/setting.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<!-- Common Header -->
-<%@include file="common/header.jsp"%>
+	<!-- Common Header -->
+	<%@include file="common/header.jsp"%>
 
-<title>SB Admin - Login</title>
+	<title>SB Admin - Login</title>
 
 </head>
 
@@ -16,18 +17,21 @@
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">Login</div>
 			<div class="card-body">
+				<c:if test="${failMessage != null}">
+					<label class="form-controll">${failMessage}</label>
+				</c:if>
 				<form action="/login" method="post">
-					<c:if test="${failMessage != null}">
-						<label class="form-controll">${failMessage}</label>
-					</c:if>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="email" id="inputEmail" name="account" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> <label for="inputEmail">Email address</label>
+							<input type="email" id="inputEmail" name="account" class="form-control"
+								placeholder="Email address" required="required" autofocus="autofocus"> <label
+								for="inputEmail">Email address</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-label-group">
-							<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="required"> <label for="inputPassword">Password</label>
+							<input type="password" id="inputPassword" name="password" class="form-control"
+								placeholder="Password" required="required"> <label for="inputPassword">Password</label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -36,10 +40,11 @@
 							</label>
 						</div>
 					</div>
-					<a class="btn btn-primary btn-block" id="loginBtn">Login</a>
+					<a class="btn btn-primary btn-block" href="#" id="loginBtn">Login</a>
 				</form>
 				<div class="text-center">
-					<a class="d-block small mt-3" href="/register">Register an Account</a> <a class="d-block small" href="/forgot-password">Forgot Password?</a>
+					<a class="d-block small mt-3" href="register">Register an Account</a> <a class="d-block small"
+						href="forgotPassword">Forgot Password?</a>
 				</div>
 			</div>
 		</div>

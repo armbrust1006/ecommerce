@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ecommerce
+Bundle-SymbolicName: ecommerce
+Bundle-Version: 1.0.0.qualifier
+Export-Package: kr.co.ecommerce,
+ kr.co.ecommerce.config.interceptor,
+ kr.co.ecommerce.controller,
+ kr.co.ecommerce.dao,
+ kr.co.ecommerce.dao.join,
+ kr.co.ecommerce.dto,
+ kr.co.ecommerce.repository,
+ kr.co.ecommerce.repository.jpa.interfaces,
+ kr.co.ecommerce.repository.qdsl,
+ kr.co.ecommerce.service

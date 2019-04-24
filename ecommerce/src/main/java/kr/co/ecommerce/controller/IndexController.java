@@ -11,33 +11,62 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	private final Logger log = LoggerFactory.getLogger(IndexController.class);
 
+	/**
+	 * 기본 페이지 이동
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String defualtIndex(Model model) {
-		log.info("index.jsp Paging");
-		return "index";
+		log.info("### index Page ###");
+		return "redirect:/index";
 	}
-
+	/**
+	 * 기본 페이지 이동
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model) {
-		log.info("index.jsp Paging");
+		log.info("### index Page ###");
 		return "index";
 	}
 
+	/**
+	 * 빈 페이지 이동
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/blank", method = RequestMethod.GET)
 	public String blank(Model model) {
-		log.info("index.jsp Paging");
+		log.info("### blank Page ###");
 		return "blank";
 	}
 
+	/**
+	 * 차트 페이지 이동
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/charts", method = RequestMethod.GET)
 	public String charts(Model model) {
-		log.info("index.jsp Paging");
+		log.info("### charts Page ###");
 		return "charts";
 	}
 
+	/**
+	 * 테이블 페이지 이동(게시판)
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/tables", method = RequestMethod.GET)
 	public String tables(Model model) {
-		log.info("index.jsp Paging");
+		log.info("### tables Page ###");
 		return "tables";
 	}
 
