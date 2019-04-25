@@ -1,8 +1,7 @@
 package kr.co.ecommerce.controller;
 
 import java.time.LocalDateTime;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.time.ZoneId;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +17,10 @@ import kr.co.ecommerce.dao.Member;
 import kr.co.ecommerce.dto.RegisterDto;
 import kr.co.ecommerce.service.RegisterService;
 import kr.co.ecommerce.utility.CustomUtil;
+import kr.co.ecommerce.utility.VariablesUtil;
 
 @Controller
+@RequestMapping("/regist")
 public class RegisterController {
 	private final Logger log = LoggerFactory.getLogger(RegisterController.class);
 
@@ -27,21 +28,23 @@ public class RegisterController {
 	private RegisterService registerService;
 
 	/**
+	 * 회원 등록 페이지 이동
 	 * 
-	 * @return
+	 * @return 페이지 이동
 	 */
-	@RequestMapping(value = "/regist", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String registerPage() {
 		log.info("### register Page ###");
 		return "register";
 	}
 
 	/**
+	 * 회원 등록 처리
 	 * 
 	 * @param registerDto
-	 * @return
+	 * @return 페이지 이동
 	 */
-	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView register(@RequestBody RegisterDto registerDto) {
 		log.info("### register processing ###");
 		ModelAndView modelAndView = new ModelAndView();
@@ -54,16 +57,18 @@ public class RegisterController {
 				return modelAndView;
 			}
 			// 회원등록 처리
-			registerService.insertMember(Member.builder()
-					.name(registerDto.getName())
-					.birthdayYear(Integer.parseInt(registerDto.getBirthdayYear()))
-					.birthdayMonth(Integer.parseInt(registerDto.getBirthdayMonth()))
-					.birthdayDate(Integer.parseInt(registerDto.getBirthdayDate()))
-					.account(email)
-					.password(registerDto.getPassword())
-					.address(registerDto.getAddress()).email(email)
-					.createDate(LocalDateTime.now())
-					.build());
+			registerService.insertMember(
+					Member.builder()
+						.name(registerDto.getName())
+						.birthdayYear(Integer.parseInt(registerDto.getBirthdayYear()))
+						.birthdayMonth(Integer.parseInt(registerDto.getBirthdayMonth()))
+						.birthdayDate(Integer.parseInt(registerDto.getBirthdayDate()))
+						.account(email)
+						.password(registerDto.getPassword())
+						.address(registerDto.getAddress())
+						.email(email)
+						.createDate(LocalDateTime.now(ZoneId.of(VariablesUtil.ZONE_ID_SEOUL)))
+							.build());
 		} catch (DuplicateKeyException e) {
 			// 중복되는 회원아이디가 존재하면 에러 반환
 			log.info("### register failed ###");

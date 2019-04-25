@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import kr.co.ecommerce.utility.VariablesUtil;
+
 @Component
 public class CustomeInterceptor extends HandlerInterceptorAdapter {
 	private final Logger log = LoggerFactory.getLogger(CustomeInterceptor.class);
@@ -18,10 +20,10 @@ public class CustomeInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		log.info("### preHandle ###");
-		log.info(request.getRequestURL().toString());
-		
+		// 로그인 세션이 존재하지 않으면 로그인 페이지로 이동
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login") == null) {
+			session.setAttribute(VariablesUtil.LOGIN_CONFIRM_KEY, "");
 			response.sendRedirect("/login");
 			return false;
 		}

@@ -21,6 +21,11 @@ public class RegisterService {
 	@Autowired
 	private MemberMapper memberMapper;
 
+	/**
+	 * 회원 등록
+	 * @param member 회원 정보
+	 * @throws DuplicateKeyException 
+	 */
 	@Transactional
 	public void insertMember(Member member) throws DuplicateKeyException {
 		log.info("### insertMember ###");

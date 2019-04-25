@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +20,10 @@ import kr.co.ecommerce.dao.Member;
 import kr.co.ecommerce.dto.LoginDto;
 import kr.co.ecommerce.dto.SessionInfoDto;
 import kr.co.ecommerce.service.LoginService;
+import kr.co.ecommerce.utility.VariablesUtil;
 
 @Controller
+@RequestMapping("/login")
 public class LoginController {
 	private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
@@ -31,9 +35,15 @@ public class LoginController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
+	@RequestMapping(method = RequestMethod.GET)
+	public String loginPage(HttpSession session, Model model) {
 		log.info("### login Page ###");
+		String tempSessionKey = VariablesUtil.LOGIN_CONFIRM_KEY;
+		String message = (String) session.getAttribute(tempSessionKey);
+		if (!StringUtils.isEmpty(message)) {
+			model.addAttribute(tempSessionKey, message);
+			session.removeAttribute(tempSessionKey);
+		}
 		return "login";
 	}
 
@@ -45,7 +55,7 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView loginProcess(@ModelAttribute("loginDto") LoginDto loginDto, HttpSession session) {
 		log.info("### login Process ###");
 		ModelAndView modelAndView = new ModelAndView();
@@ -86,7 +96,7 @@ public class LoginController {
 	public @ResponseBody String loginCheck(HttpSession session) {
 		log.info("### loginCheck posessing ###");
 		if (session.getAttribute("login") != null) {
-			return new StringBuilder().append("이미 로그인 되어 있습니다.\r\n").append("그래도 다시 로그인 하시겠습니까?").toString();
+			return "이미 로그인 되어 있습니다.\r\n그래도 다시 로그인 하시겠습니까?";
 		}
 		return "";
 	}

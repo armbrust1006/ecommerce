@@ -1,5 +1,6 @@
 package kr.co.ecommerce;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,11 @@ public class LoginRestControllerTest {
 
 	@Autowired
 	LoginService loginService;
+
+	@Before
+	public void test1() {
+
+	}
 
 	@Test
 	public void login() {

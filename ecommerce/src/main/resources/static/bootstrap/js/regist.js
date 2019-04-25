@@ -1,5 +1,9 @@
+// 최대 습득 가능 생일년도 
 var maximumBrithday = 110;
 
+/**
+ * 생일 선택 박스 년도 동적 처리
+ */
 function setYear() {
 	let year = new Date().getFullYear();
 	let yearOptions = "<option></option>";
@@ -10,12 +14,20 @@ function setYear() {
 	$('#selectYear').empty().append(yearOptions);
 }
 
+/**
+ * 생일 선택 박스 숫자 2자리수 변환
+ * @param {number} num 
+ * @returns {string} 2자리수 문자열
+ */
 function numbering(num) {
 	if (num.toString().length != 2)
 		return "0" + num
 	return num;
 }
 
+/**
+ * 생일 선택 박스 월 동적 처리
+ */
 function setMonth() {
 	let monthOptions = "<option></option>";
 	for (var i = 1; i < 13; i++) {
@@ -25,6 +37,12 @@ function setMonth() {
 	$('#selectMonth').empty().append(monthOptions);
 }
 
+/**
+ * 윤년 계산
+ * @param {number} year 
+ * @param {number} month 
+ * @returns {number} 해당 월의 최대 일
+ */
 function getLeapYear(year, month) {
 	switch (month) {
 		case "2":
@@ -49,6 +67,11 @@ function getLeapYear(year, month) {
 	}
 }
 
+/**
+ * 생일 선택 박스 일 동적 처리
+ * @param {number} year 
+ * @param {number} month 
+ */
 function setDay(year, month) {
 	let days = getLeapYear(year, month);
 	let dayOptions = "<option></option>";
@@ -62,22 +85,23 @@ function setDay(year, month) {
 	setYear();
 
 	$(document).on('change', '#selectYear', function (param) {
+		// 생일 월일 선택 박스 리셋
 		setMonth();
 		setDay(0, 0);
 	});
 	$(document).on('change', '#selectMonth', function (param) {
+		// 생일 일 선택 박스 리셋
 		setDay($('#selectYear').val(), $('#selectMonth').val());
 	});
 
+	// 등록 처리
 	$(document).on('click', '#regist', function (event) {
-		let passArray = [];
-		$('input[name=password').each(function (i, element) {
-			passArray.push(this.value);
-		});
-		if (passArray[0] === passArray[1]) {
+		if ($('#inputPassword').val() === $('#confirmPassword').val()) {
 			let obj = {};
 			$('form').find('input[class=form-control]').each(function () {
-				obj[this.name] = this.value;
+				if (!isEmpty(this.name)) {
+					obj[this.name] = this.value;
+				}
 			});
 			$('form').find('select[class=form-control]').each(function () {
 				obj[this.name] = this.value;
@@ -87,4 +111,4 @@ function setDay(year, month) {
 		}
 
 	});
-})(jQuery); // End of use strict
+})(jQuery);

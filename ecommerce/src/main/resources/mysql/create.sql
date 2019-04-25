@@ -9,7 +9,7 @@ CREATE TABLE ecommerce.member (
     email VARCHAR(30) NOT NULL,
     address VARCHAR(100),
     create_date TIMESTAMP NOT NULL,
-    update_date TIMESTAMP DEFAULT NOW (),
+    update_date TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY (member_id)
 )  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
