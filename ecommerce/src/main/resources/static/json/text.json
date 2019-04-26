@@ -1,0 +1,11 @@
+{
+    "defaultMessage": "초 후 {{page}} 페이지로 이동합니다.",
+    "pageChange": [
+        {
+            "login": "로그인"
+        },
+        {
+            "index": "메인"
+        }
+    ]
+}

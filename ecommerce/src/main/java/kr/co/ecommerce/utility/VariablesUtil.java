@@ -7,8 +7,7 @@ public class VariablesUtil {
 	public static final String ZONE_ID_SEOUL = "Asia/Seoul";
 
 	// confirm 맵키값
-	public static final String LOGIN_CONFIRM_KEY = "loginConfirm";
-	public static final String LOGIN_CONFIRM_VALUE = "로그인 후 이용 가능합니다.\r\n 로그인 페이지로 이동하시겠습니까?";
+	public static final String PAGING_MESSAGE = "pageMessage";
 
 	// 존재 여부
 	public static final int EXIST_FLAG = 1;

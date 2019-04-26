@@ -1,5 +1,8 @@
 package kr.co.ecommerce.config.interceptor;
 
+import java.util.stream.Stream;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,9 +24,12 @@ public class CustomeInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		log.info("### preHandle ###");
 		// 로그인 세션이 존재하지 않으면 로그인 페이지로 이동
+		Stream.<String>builder().add("").build();
 		HttpSession session = request.getSession();
 		if (session.getAttribute("login") == null) {
-			session.setAttribute(VariablesUtil.LOGIN_CONFIRM_KEY, "");
+			Cookie cookie = new Cookie(VariablesUtil.PAGING_MESSAGE, "login");
+			cookie.setMaxAge(10);
+			response.addCookie(cookie);
 			response.sendRedirect("/login");
 			return false;
 		}

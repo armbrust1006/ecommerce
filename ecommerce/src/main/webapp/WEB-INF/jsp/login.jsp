@@ -51,7 +51,8 @@
 
 	<!-- Custom JavaScript-->
 	<script type="text/javascript">
-			var message1 = '${loginConfirm}';
+		var session = '${pageMessage}';
+		var message1 = '${loginConfirm}';
 	</script>
 	<script src="/static/bootstrap/js/login.js"></script>
 

@@ -7,3 +7,6 @@
 
 <!-- Ajax JavaScript-->
 <script src="/static/bootstrap/js/ajax-custom.js"></script>
+
+<!-- Custom Common JavaScript-->
+<script src="/static/bootstrap/js/common.js"></script>

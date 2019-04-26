@@ -1,11 +1,16 @@
 package kr.co.ecommerce.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.ecommerce.utility.VariablesUtil;
 
 @Controller
 public class IndexController {
@@ -22,6 +27,7 @@ public class IndexController {
 		log.info("### index Page ###");
 		return "redirect:/index";
 	}
+
 	/**
 	 * 기본 페이지 이동
 	 * 
@@ -68,6 +74,24 @@ public class IndexController {
 	public String tables(Model model) {
 		log.info("### tables Page ###");
 		return "tables";
+	}
+
+	/**
+	 * 테이블 페이지 이동(게시판)
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/change", method = RequestMethod.GET)
+	public String changer(HttpSession session, Model model) {
+		log.info("### change Page ###");
+		String tempSessionKey = VariablesUtil.PAGING_MESSAGE;
+		String message = (String) session.getAttribute(tempSessionKey);
+		if (!StringUtils.isEmpty(message)) {
+			model.addAttribute(tempSessionKey, message);
+			session.removeAttribute(tempSessionKey);
+		}
+		return "page-changer";
 	}
 
 }
